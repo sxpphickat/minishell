@@ -8,6 +8,11 @@
 
 int	main(void)
 {
-	printf("%s\n", readline("minish> "));
+	char	*command;
+	while (1)
+	{
+		command = readline("minish> ");
+		free(command);
+	}
 	return (0);
 }

@@ -12,22 +12,25 @@
 int	main(int argc, char *argv[], char *envp[])
 {
 	pid_t	c_pid;
+	char	*command;
+	char	buff[100];
+	char	*fenv[] = {NULL};
 
 	if (argc != 1)
 		return (0);
-	char	*command;
+	printf("%s\n", getcwd(buff, 99));
 	while (1)
 	{
 		command = readline("minish> ");
 		c_pid = fork();
 		if (c_pid == 0)
 		{
-			execve(command, argv, envp);
+			execve(command, argv, fenv);
+			free(command);
 			return (0);
 		}
 		else
 			wait(NULL);
-
 		free(command);
 	}
 	return (0);

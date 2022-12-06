@@ -11,7 +11,7 @@ RM = rm -f
 LIB = libft/libft.a
 
 $(NAME):	$(SRC) $(LIB)
-			$(CC) $(CFLAGS) $(SRC) -o $(NAME)
+			$(CC) $(CFLAGS) $(SRC) $(LIB) -o $(NAME)
 
 all:		$(NAME)
 

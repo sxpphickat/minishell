@@ -1,6 +1,6 @@
 NAME = minishell
 
-SRC = minishell.c \
+SRC = main.c \
 
 CC = cc
 
@@ -8,17 +8,22 @@ CFLAGS = -Wall -Wextra -Werror -lreadline
 
 RM = rm -f
 
-LIB = path
+LIB = libft/libft.a
 
-$(NAME):	$(SRC)
+$(NAME):	$(SRC) $(LIB)
 			$(CC) $(CFLAGS) $(SRC) -o $(NAME)
 
 all:		$(NAME)
 
+$(LIB):
+			make -C libft
+
 clean:
+			make clean -C libft
 
 fclean:		clean
 			$(RM) $(NAME)
+			make fclean -C libft
 
 re:			fclean all
 

@@ -2,6 +2,25 @@
 
 #include "minishell.h"
 
+int	check_built_in(char *input[])
+{
+	if (!ft_strncmp(input[0], "pwd", ft_strlen(input[0])))
+		ft_pwd();
+	else if (!ft_strncmp(input[0], "exit", ft_strlen(input[0])))
+		ft_exit();
+	else if (!ft_strncmp(input[0], "echo", ft_strlen(input[0])))
+		printf("not done yet\n");
+	else if (!ft_strncmp(input[0], "cd", ft_strlen(input[0])))
+		printf("not done yet\n");
+	else if (!ft_strncmp(input[0], "export", ft_strlen(input[0])))
+		printf("not done yet\n");
+	else if (!ft_strncmp(input[0], "unset", ft_strlen(input[0])))
+		printf("not done yet\n");
+	else
+		return (0);
+	return (1);
+}
+
 int	main(int argc, char *argv[], char *envp[])
 {
 	pid_t	c_pid;
@@ -32,10 +51,8 @@ int	main(int argc, char *argv[], char *envp[])
 		add_history(read);
 		input = ft_split(read, ' ');
 		free(read);
-		if (!ft_strncmp(input[0], "pwd", ft_strlen(input[0]))) // usar um array com todos os nomes de built-ins
-			ft_pwd();
-		else if (!ft_strncmp(input[0], "exit", ft_strlen(input[0])))
-			ft_exit();
+		if (check_built_in(input))
+			continue ;
 		else
 			c_pid = fork();
 		if (c_pid == 0)

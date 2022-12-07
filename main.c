@@ -1,15 +1,6 @@
 /* fvck minishell */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-
-#include <readline/readline.h>
-#include <readline/history.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include "libft/libft.h"
-#include <termios.h>
+#include "minishell.h"
 
 int	main(int argc, char *argv[], char *envp[])
 {

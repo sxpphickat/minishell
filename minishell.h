@@ -14,6 +14,10 @@
 # include <termios.h>
 
 
+// built-in functions
+
+void	ft_pwd(void);
+void	ft_exit(void);
 
 
 

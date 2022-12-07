@@ -1,6 +1,8 @@
 NAME = minishell
 
-SRC = main.c \
+SRC =	main.c \
+		built-in/pwd.c \
+		built-in/exit.c \
 
 CC = cc
 

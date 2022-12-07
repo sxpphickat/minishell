@@ -2,20 +2,6 @@
 
 #include "minishell.h"
 
-void	ft_pwd(void)
-{
-	char	*buff;
-
-	buff = malloc(100);
-	getcwd(buff, 100);
-	printf("%s\n", buff);
-}
-
-void	ft_exit(void)
-{
-	exit(0);
-}
-
 int	main(int argc, char *argv[], char *envp[])
 {
 	pid_t	c_pid;
@@ -47,6 +33,8 @@ int	main(int argc, char *argv[], char *envp[])
 		input = ft_split(read, ' ');
 		free(read);
 		if (!ft_strncmp(input[0], "pwd", ft_strlen(input[0]))) // usar um array com todos os nomes de built-ins
+			ft_pwd();
+		else if (!ft_strncmp(input[0], "exit", ft_strlen(input[0])))
 			ft_exit();
 		else
 			c_pid = fork();

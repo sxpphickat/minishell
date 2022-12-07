@@ -9,6 +9,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include "libft/libft.h"
+#include <termios.h>
 
 int	main(int argc, char *argv[], char *envp[])
 {
@@ -18,7 +19,16 @@ int	main(int argc, char *argv[], char *envp[])
 	char	**path;
 	char	*read;
 	int		i;
+	struct termios		old_termios;
+	struct termios		new_termios;
 
+	tcgetattr(0, &old_termios);
+	new_termios = old_termios;				// inverte os comandos ^C e ^D
+	new_termios.c_cc[VEOF] = 3;
+	new_termios.c_cc[VINTR] = 4;
+	tcsetattr(0, TCSANOW, &new_termios);
+
+	signal(SIGQUIT, SIG_IGN);				// ignora o ctrl backslash
 	(void)argv;
 	if (argc != 1)
 		return (0);

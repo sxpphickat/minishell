@@ -16,6 +16,8 @@ int	check_built_in(char *input[])
 		printf("not done yet\n");
 	else if (!ft_strncmp(input[0], "unset", ft_strlen(input[0])))
 		printf("not done yet\n");
+	else if (!ft_strncmp(input[0], "env", ft_strlen(input[0])))
+		ft_env();
 	else
 		return (0);
 	return (1);

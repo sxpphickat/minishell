@@ -18,6 +18,7 @@
 
 void	ft_pwd(void);
 void	ft_exit(void);
+void	ft_env(void);
 
 
 

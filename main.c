@@ -30,9 +30,12 @@ int	main(int argc, char *argv[], char *envp[])
 		read = readline("minish> ");
 		add_history(read);
 		input = ft_split(read, ' ');
+		free(read);
 		c_pid = fork();
 		if (c_pid == 0)
 		{
+			if (!access(input[0], X_OK))
+				execve(input[0], input, envp);
 			i = -1;
 			while (path[++i])
 			{

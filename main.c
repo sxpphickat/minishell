@@ -2,6 +2,20 @@
 
 #include "minishell.h"
 
+void	ft_pwd(void)
+{
+	char	*buff;
+
+	buff = malloc(100);
+	getcwd(buff, 100);
+	printf("%s\n", buff);
+}
+
+void	ft_exit(void)
+{
+	exit(0);
+}
+
 int	main(int argc, char *argv[], char *envp[])
 {
 	pid_t	c_pid;
@@ -17,7 +31,7 @@ int	main(int argc, char *argv[], char *envp[])
 	new_termios = old_termios;				// inverte os comandos ^C e ^D
 	new_termios.c_cc[VEOF] = 3;
 	new_termios.c_cc[VINTR] = 4;
-	tcsetattr(0, TCSANOW, &new_termios);
+	tcsetattr(0, TCSANOW, &new_termios);	// isso está invertendo até fora do minishell, vou tentar criar uma saida limpa que desnverta isso
 
 	signal(SIGQUIT, SIG_IGN);				// ignora o ctrl backslash
 	(void)argv;
@@ -32,7 +46,10 @@ int	main(int argc, char *argv[], char *envp[])
 		add_history(read);
 		input = ft_split(read, ' ');
 		free(read);
-		c_pid = fork();
+		if (!ft_strncmp(input[0], "pwd", ft_strlen(input[0]))) // usar um array com todos os nomes de built-ins
+			ft_exit();
+		else
+			c_pid = fork();
 		if (c_pid == 0)
 		{
 			if (!access(input[0], X_OK))

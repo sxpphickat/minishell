@@ -14,10 +14,11 @@ int	main(int argc, char *argv[], char *envp[])
 {
 	pid_t	c_pid;
 	char	*command;
-	char	*input;
+	char	**input;
 	char	**path;
 	int		i;
 
+	(void)argv;
 	if (argc != 1)
 		return (0);
 	command = NULL;
@@ -25,21 +26,21 @@ int	main(int argc, char *argv[], char *envp[])
 	i = -1;
 	while (1)
 	{
-		input = readline("minish> ");
+		input = ft_split(readline("minish> "), ' ');
 		c_pid = fork();
 		if (c_pid == 0)
 		{
 			i = -1;
 			while (path[++i])
 			{
-				command = ft_strjoin(path[i], ft_strjoin("/", input));
+				command = ft_strjoin(path[i], ft_strjoin("/", input[0]));
 				if (!access(command, X_OK))
 					break ;
 			}
 			if (path[i])
-				execve(command, argv, envp);
+				execve(command, input, envp);
 			else
-				printf("minish: command not found: %s\n", input);
+				printf("minish: command not found: %s\n", input[0]);
 			free(input);
 			free(command);
 			return (0);

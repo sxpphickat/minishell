@@ -17,7 +17,7 @@
 // built-in functions
 
 void	ft_pwd(void);
-void	ft_exit(void);
+void	ft_exit(char **input);
 void	ft_env(void);
 
 

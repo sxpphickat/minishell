@@ -4,19 +4,19 @@
 
 int	check_built_in(char *input[])
 {
-	if (!ft_strncmp(input[0], "pwd", ft_strlen(input[0])))
+	if (!ft_strncmp(input[0], "pwd", ft_strlen("pwd")))
 		ft_pwd();
-	else if (!ft_strncmp(input[0], "exit", ft_strlen(input[0])))
-		ft_exit();
-	else if (!ft_strncmp(input[0], "echo", ft_strlen(input[0])))
+	else if (!ft_strncmp(input[0], "exit", ft_strlen("exit")))
+		ft_exit(input);
+	else if (!ft_strncmp(input[0], "echo", ft_strlen("echo")))
 		printf("not done yet\n");
-	else if (!ft_strncmp(input[0], "cd", ft_strlen(input[0])))
+	else if (!ft_strncmp(input[0], "cd", ft_strlen("cd")))
 		printf("not done yet\n");
-	else if (!ft_strncmp(input[0], "export", ft_strlen(input[0])))
+	else if (!ft_strncmp(input[0], "export", ft_strlen("export")))
 		printf("not done yet\n");
-	else if (!ft_strncmp(input[0], "unset", ft_strlen(input[0])))
+	else if (!ft_strncmp(input[0], "unset", ft_strlen("unset")))
 		printf("not done yet\n");
-	else if (!ft_strncmp(input[0], "env", ft_strlen(input[0])))
+	else if (!ft_strncmp(input[0], "env", ft_strlen("env")))
 		ft_env();
 	else
 		return (0);

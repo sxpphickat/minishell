@@ -16,6 +16,7 @@ int	main(int argc, char *argv[], char *envp[])
 	char	*command;
 	char	**input;
 	char	**path;
+	char	*read;
 	int		i;
 
 	(void)argv;
@@ -26,7 +27,9 @@ int	main(int argc, char *argv[], char *envp[])
 	i = -1;
 	while (1)
 	{
-		input = ft_split(readline("minish> "), ' ');
+		read = readline("minish> ");
+		add_history(read);
+		input = ft_split(read, ' ');
 		c_pid = fork();
 		if (c_pid == 0)
 		{

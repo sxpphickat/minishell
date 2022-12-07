@@ -46,17 +46,29 @@ int	main(int argc, char *argv[], char *envp[])
 		return (0);
 	command = NULL;
 	path = ft_split(getenv("PATH"), ':');
-	i = -1;
+	i = 0;
 	while (1)
 	{
 		read = readline("minish> ");
 		add_history(read);
 		input = ft_split(read, ' ');
 		free(read);
-		if (check_built_in(input))
+
+		if (input[0][0] == '$')
+		{
+			char *var = ft_strjoin(&input[0][1], "=");
+			i = 0;
+			while (envp[i])
+			{
+				if (!ft_strncmp(envp[i], var, ft_strlen(var))) // pega as variaveis de sistema
+					printf("%s\n", envp[i]);
+				i++;
+			}
+		}
+		else if (check_built_in(input))
 			continue ;
 		else
-			c_pid = fork();
+		c_pid = fork();
 		if (c_pid == 0)
 		{
 			if (!access(input[0], X_OK))

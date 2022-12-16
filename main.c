@@ -31,14 +31,18 @@ int	main(int argc, char *argv[], char *envp[])
 	char	**path;
 	char	*read;
 	int		i;
+/*
 	struct termios		old_termios;
 	struct termios		new_termios;
+
 
 	tcgetattr(0, &old_termios);
 	new_termios = old_termios;				// inverte os comandos ^C e ^D
 	new_termios.c_cc[VEOF] = 3;
 	new_termios.c_cc[VINTR] = 4;
 	tcsetattr(0, TCSANOW, &new_termios);	// isso está invertendo até fora do minishell, vou tentar criar uma saida limpa que desnverta isso
+											//
+*/
 
 	signal(SIGQUIT, SIG_IGN);				// ignora o ctrl backslash
 	(void)argv;
@@ -89,7 +93,7 @@ int	main(int argc, char *argv[], char *envp[])
 			return (0);
 		}
 		else
-			wait(NULL);
+			waitpid(c_pid, 0, 0);
 	}
 	return (0);
 }

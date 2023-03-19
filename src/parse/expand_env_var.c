@@ -15,11 +15,9 @@
 char	*ft_charjoin(char const *s1, char const	c)
 {
 	size_t	i;
-	size_t	j;
 	char	*str;
 
 	i = 0;
-	j = 0;
 	if (!s1 || !c)
 		return (NULL);
 	str = (char *)malloc(ft_gnl_strlen(s1) + 1 + 1);

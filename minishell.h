@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgorki < rgorki@student.42.rio>            +#+  +:+       +#+        */
+/*   By: sxpph <sxpph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 15:45:18 by vipereir          #+#    #+#             */
-/*   Updated: 2023/03/16 17:28:31 by rgorki           ###   ########.fr       */
+/*   Updated: 2023/03/19 14:26:41 by sxpph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@
 typedef struct s_env
 {
 	char	**env;
-	char	*oldpwd;
-	char	*shlvl;
 }	t_env;
 
 typedef struct s_token{

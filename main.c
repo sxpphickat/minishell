@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vipereir <vipereir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sxpph <sxpph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:32:26 by vipereir          #+#    #+#             */
-/*   Updated: 2023/03/16 08:40:22 by vipereir         ###   ########.fr       */
+/*   Updated: 2023/03/19 14:28:32 by sxpph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ int	main(int argc, char *argv[], char **envp)
 	char		*input;
 	t_token		*tokens;
 
-	tokens = NULL;
-	env = malloc(sizeof(t_env));
-	env->env = matrix_dup(envp);
 	(void)argv;
 	if (argc != 1)
 		return (0);
+	tokens = NULL;
+	env = malloc(sizeof(t_env));
+	env->env = matrix_dup(envp);
 	signal(SIGQUIT, SIG_IGN);
 	jump_line();
 	while (666)

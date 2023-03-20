@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgorki < rgorki@student.42.rio>            +#+  +:+       +#+        */
+/*   By: sxpph <sxpph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 15:49:28 by vipereir          #+#    #+#             */
-/*   Updated: 2023/03/16 16:37:48 by rgorki           ###   ########.fr       */
+/*   Updated: 2023/03/20 17:30:12 by sxpph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ static void	free_exit(t_env *env, t_cmd_list **master_head)
 	clear_history();
 }
 
+static void	only_exit(t_env *env, t_cmd_list **master_head)
+{
+	free_exit(env, master_head);
+	exit(0);
+}
+
 void	ft_exit(char **input, t_cmd_list **master_head, t_env *env)
 {
 	int	i;
@@ -27,10 +33,9 @@ void	ft_exit(char **input, t_cmd_list **master_head, t_env *env)
 
 	i = 0;
 	if (!input[1])
-	{
-		free_exit(env, master_head);
-		exit(0);
-	}
+		only_exit(env, master_head);
+	if (input[1][i] && (input[1][i] == '+' || input[1][i] == '-'))
+		i++;
 	while (input[1][i])
 	{
 		if (input[1][i] >= 0x30 && input[1][i] <= 0x39)

@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:18:49 by vipereir          #+#    #+#             */
-/*   Updated: 2023/03/21 11:18:50 by vipereir         ###   ########.fr       */
+/*   Updated: 2023/03/22 12:33:51 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,17 @@ void	quotes_switch(char c, int *status)
 			*status = S_QUOTE;
 	}
 	if (c == '"')
+	{
+		if (*status == D_QUOTE)
+			*status = 0;
+		else if (*status == 0)
+			*status = D_QUOTE;
+	}
+}
+
+void	dquotes_switch(char c, int *status)
+{
+	if (c && c == '"')
 	{
 		if (*status == D_QUOTE)
 			*status = 0;

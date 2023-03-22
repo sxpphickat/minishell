@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:13:51 by vipereir          #+#    #+#             */
-/*   Updated: 2023/03/21 11:13:52 by vipereir         ###   ########.fr       */
+/*   Updated: 2023/03/22 12:37:56 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ char			*pre_parse(char *str);
 
 int				parse(char	*input, t_token	**tokens, t_env *env);
 void			quotes_switch(char c, int *status);
+void			dquotes_switch(char c, int *status);
 char			**parse_split(char const *s, char c);
 void			add_token(t_token **head, char *word);
 void			create_tokens(char **splited, t_token **tokens);
@@ -121,6 +122,7 @@ char			*expand_env_case(char *word, char *new_word,
 					int *i, t_env *env);
 char			*expand_ret_val_case(char *new_word, int *i);
 char			have_quotes(char	*word);
+char			have_dquotes(char	*word);
 char			*single_quotes_jump(char *word, char *new_word, int *i);
 char			*ft_charjoin(char const *s1, char const	c);
 

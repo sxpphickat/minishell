@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:18:59 by vipereir          #+#    #+#             */
-/*   Updated: 2023/03/21 11:19:00 by vipereir         ###   ########.fr       */
+/*   Updated: 2023/03/22 12:37:40 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,20 @@ char	have_quotes(char	*word)
 	while (word[i])
 	{
 		if (word[i] == '"' || word[i] == '\'')
+			return (word[i]);
+		i++;
+	}
+	return ('\0');
+}
+
+char	have_dquotes(char	*word)
+{
+	int	i;
+
+	i = 0;
+	while (word[i])
+	{
+		if (word[i] && word[i] == '\'')
 			return (word[i]);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:18:16 by vipereir          #+#    #+#             */
-/*   Updated: 2023/03/21 11:18:17 by vipereir         ###   ########.fr       */
+/*   Updated: 2023/03/22 12:38:06 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,18 @@ void	word_expanssion(t_token **tokens, t_env *env)
 	char		*word;
 	char		*new_word;
 	int			i;
+	int			quote_flag;
 
+	quote_flag = 0;
 	i = 0;
 	word = (*tokens)->word;
 	new_word = ft_calloc(sizeof(char), ft_strlen(word) + 1);
 	while (word[i])
 	{
+		if (word[i] && word[i] == '"')
+			dquotes_switch(word[i], &quote_flag);
 		if (word[i] && word[i] == '\'' && word[i + 1]
-			&& have_quotes(&word[i + 1]) == '\'')
+			&& have_dquotes(&word[i + 1]) == '\'' && quote_flag == 0)
 			new_word = single_quotes_jump(word, new_word, &i);
 		if (word[i] && word[i] == '$' && word[i + 1] == '?')
 			new_word = expand_ret_val_case(new_word, &i);

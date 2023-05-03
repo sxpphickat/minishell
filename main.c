@@ -3,30 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
+/*   By: sooph <sooph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:13:27 by vipereir          #+#    #+#             */
-/*   Updated: 2023/03/21 11:13:28 by vipereir         ###   ########.fr       */
+/*   Updated: 2023/05/03 11:51:33 by sooph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-static void	init_oldpwd(t_env *env)
-{
-	char	**input;
-
-	if (find_oldpwd(env) != -1)
-	{
-		input = ft_calloc(sizeof(char *), 3);
-		if (!input)
-			return ;
-		input[0] = ft_strdup("export");
-		input[1] = ft_strdup("OLDPWD=");
-		ft_export(env, input);
-		ft_free_matrix(input);
-	}
-}
 
 int	main(int argc, char *argv[], char **envp)
 {

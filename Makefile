@@ -48,6 +48,8 @@ SRC =	main.c \
 		src/signals/signal_ctrl_c.c \
 		src/signals/ctrl_d.c
 
+HEADER = minishell.h
+
 CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -g
@@ -64,7 +66,7 @@ RM = rm -f
 
 LIB = src/utils/libft/libft.a
 
-$(NAME):	$(SRC) $(LIB)
+$(NAME):	$(SRC) $(LIB) $(HEADER)
 			$(CC) $(CFLAGS) $(SRC) $(LIB) -lreadline $(CPPFLAGS) $(LDFLAGS) -o $(NAME)
 
 all:		$(NAME)

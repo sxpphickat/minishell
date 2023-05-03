@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sooph <sooph@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:13:51 by vipereir          #+#    #+#             */
-/*   Updated: 2023/05/03 11:53:06 by sooph            ###   ########.fr       */
+/*   Updated: 2023/05/03 12:00:49 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,23 @@
 # include <dirent.h>
 # include <sys/ioctl.h>
 
-# define PIPE 1
+/* 
+# define PIPE
 # define OUTPUT 2
 # define INPUT 3
 # define HERE_DOC 4
 # define APPEND 5
+ */
+
+enum	operators {
+	PIPE = 1,
+	OUTPUT = 2,
+	INPUT = 3,
+	HERE_DOC = 4,
+	APPEND = 5,
+	AND = 6,
+	OR = 7
+};
 
 # define COMMAND 8
 # define PARAM 9

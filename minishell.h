@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
+/*   By: sooph <sooph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:13:51 by vipereir          #+#    #+#             */
-/*   Updated: 2023/03/22 12:37:56 by vipereir         ###   ########.fr       */
+/*   Updated: 2023/05/03 11:53:06 by sooph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 # define S_QUOTE 11
 # define D_QUOTE 22
 
-int	g_ret_value;
+extern int	g_ret_value;
 
 // tokens struct
 typedef struct s_env
@@ -96,6 +96,7 @@ int				ft_env_unset(t_env *env, char **input);
 int				cd(char *path, t_env *env);
 int				my_strncmp(const char *s1, const char *s2);
 char			*pwd_util(char *buff, int size);
+void			init_oldpwd(t_env *env);
 
 // stdin functions
 

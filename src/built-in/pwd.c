@@ -6,13 +6,13 @@
 /*   By: sooph <sooph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:14:51 by vipereir          #+#    #+#             */
-/*   Updated: 2023/05/03 11:51:27 by sooph            ###   ########.fr       */
+/*   Updated: 2023/05/03 11:53:12 by sooph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-static void	init_oldpwd(t_env *env)
+void	init_oldpwd(t_env *env)
 {
 	char	**input;
 

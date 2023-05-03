@@ -6,11 +6,13 @@
 /*   By: sooph <sooph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:13:27 by vipereir          #+#    #+#             */
-/*   Updated: 2023/05/03 11:51:33 by sooph            ###   ########.fr       */
+/*   Updated: 2023/05/03 11:52:18 by sooph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	g_ret_value;
 
 int	main(int argc, char *argv[], char **envp)
 {

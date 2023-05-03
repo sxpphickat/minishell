@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:18:53 by vipereir          #+#    #+#             */
-/*   Updated: 2023/03/21 11:18:54 by vipereir         ###   ########.fr       */
+/*   Updated: 2023/05/03 14:06:11 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ static int	new_len(char *s)
 
 static int	check_pipe(char *str, int i)
 {
+	if (str[i] == '|' && str[i + 1] == '|')
+		return (0);
 	if ((str[i] != ' ' && str[i + 1] == '|')
 		|| (str[i] == '|' && str[i + 1] != ' '))
 		return (1);

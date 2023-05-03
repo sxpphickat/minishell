@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:13:51 by vipereir          #+#    #+#             */
-/*   Updated: 2023/05/03 12:00:49 by vipereir         ###   ########.fr       */
+/*   Updated: 2023/05/03 15:32:03 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # define APPEND 5
  */
 
-enum	operators {
+enum	e_operators {
 	PIPE = 1,
 	OUTPUT = 2,
 	INPUT = 3,
@@ -83,6 +83,7 @@ typedef struct s_cmd_list
 {
 	char				**argv;
 
+	int					logic_operator;
 	int					in;
 	int					out;
 	pid_t				pid;
@@ -161,6 +162,7 @@ int				execer(t_token **cmds, t_env *env);
 int				argv_size(t_token	**tokens);
 t_cmd_list		*build_commands(t_token	**tokens);
 void			wait_pids(t_cmd_list *cmds);
+void			wait_single_pid(t_cmd_list *cmds);
 
 // exec utils functions
 

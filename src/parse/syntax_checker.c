@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:19:12 by vipereir          #+#    #+#             */
-/*   Updated: 2023/03/21 11:19:13 by vipereir         ###   ########.fr       */
+/*   Updated: 2023/05/03 14:10:34 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	syntax_checker(t_token	**tokens)
 	t_token	*token;
 
 	token = *tokens;
-	if (token->type == PIPE)
+	if (token->type == PIPE || token->type == AND || token->type == OR)
 		return (return_syntax_error());
 	while (token->next)
 	{

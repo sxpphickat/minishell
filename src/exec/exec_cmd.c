@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:15:45 by vipereir          #+#    #+#             */
-/*   Updated: 2023/03/21 11:15:46 by vipereir         ###   ########.fr       */
+/*   Updated: 2023/05/03 15:02:49 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ void	exec_to_pipe(t_cmd_list **cmd_head, t_env *env)
 	{
 		signal(SIGQUIT, SIG_DFL);
 		close(fd[0]);
-		if (cmd->out == 1)
+		if (cmd->out == 1 && cmd->logic_operator == 0)
 			cmd->out = fd[1];
+		if (cmd->out == 1 && cmd->logic_operator)
+			cmd->out = dup(STDOUT_FILENO);
 		dup_close(cmd->in, cmd->out);
 		execve(cmd->argv[0], cmd->argv, env->env);
 	}

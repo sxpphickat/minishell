@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:15:14 by vipereir          #+#    #+#             */
-/*   Updated: 2023/03/21 11:15:15 by vipereir         ###   ########.fr       */
+/*   Updated: 2023/05/03 15:30:20 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@ int	add_redirect(t_redirect_list **r_head, t_token **token, t_cmd_list **c_dad)
 		*token = (*token)->next;
 	}
 	redirect_node->args[i++] = NULL;
+	if (*token && (*token)->type == AND)
+		(*c_dad)->logic_operator = AND;
+	else if (*token && (*token)->type == OR)
+		(*c_dad)->logic_operator = OR;
 	if (*token && (*token)->is_redirect)
 		add_redirect(r_head, token, c_dad);
 	return (0);
@@ -57,7 +61,7 @@ void	fill_command(t_cmd_list *cmds, t_token **token)
 	int	i;
 
 	i = 0;
-	if ((*token)->type == PIPE)
+	if ((*token)->type == PIPE || (*token)->type == OR || (*token)->type == AND)
 		*token = (*token)->next;
 	cmds->argv = ft_calloc(sizeof(char *), argv_size(token) + 1);
 	while (*token && ((*token)->type == COMMAND || (*token)->type == PARAM))
@@ -65,6 +69,10 @@ void	fill_command(t_cmd_list *cmds, t_token **token)
 		cmds->argv[i++] = ft_strdup((*token)->word);
 		*token = (*token)->next;
 	}
+	if (*token && (*token)->type == AND)
+		cmds->logic_operator = AND;
+	else if (*token && (*token)->type == OR)
+		cmds->logic_operator = OR;
 	cmds->argv[i++] = NULL;
 }
 

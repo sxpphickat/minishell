@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:15:05 by vipereir          #+#    #+#             */
-/*   Updated: 2023/03/21 11:15:06 by vipereir         ###   ########.fr       */
+/*   Updated: 2023/05/03 14:48:31 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static void	set_cmd_node_value(t_cmd_list *new_node)
 	new_node->in = 0;
 	new_node->out = 1;
 	new_node->pid = 0;
+	new_node->logic_operator = 0;
 	new_node->does_have_redirect = 0;
 	new_node->redirect = NULL;
 	new_node->prev = NULL;

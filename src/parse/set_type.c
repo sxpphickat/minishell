@@ -6,7 +6,7 @@
 /*   By: vipereir <vipereir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:19:06 by vipereir          #+#    #+#             */
-/*   Updated: 2023/03/21 11:19:07 by vipereir         ###   ########.fr       */
+/*   Updated: 2023/05/03 15:32:19 by vipereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	set_type(t_token	**tokens)
 		if (is_operator(token->word))
 		{
 			token->type = is_operator(token->word);
-			if (token->type != PIPE)
+			if (token->type == APPEND || token->type == OUTPUT
+				|| token->type == HERE_DOC || token->type == INPUT)
 				token->is_redirect = 1;
 			status = 0;
 		}
